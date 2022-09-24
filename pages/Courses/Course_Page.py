@@ -48,7 +48,7 @@ class CoursePage(BasePage):
     def selectingCourse(self, data):
         self.clickAllCourses()
         # self.selectDropdown("Software Development", self._course_dropD, "css", "visible text")
-        # self.util.sleep(2)
+        
         self.SearchCourse(data)
         # ag = self.getElement(self._JS_course_click, "xpath")
         # self.actions.click(on_element=ag)                     using actionschains
