@@ -8,7 +8,7 @@ def CustomLogger(LogLevel=logging.DEBUG):
     logger = logging.getLogger(loggerName)  # LoggerName will get class/method name, so it can be used in logs
     logger.setLevel(logging.DEBUG)
 
-    fileHandler = logging.FileHandler('automation.log', mode='a') # ("{0}.log".format(loggerName), mode='w')
+    fileHandler = logging.FileHandler('automate.log', mode='a') # ("{0}.log".format(loggerName), mode='w')
     fileHandler.setLevel(LogLevel)  # LogLevel will be given by user / setLevel of Handler overwrites setLevel of logger
 
     formatter = logging.Formatter("%(asctime)s: %(name)s: %(levelname)s: %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p")

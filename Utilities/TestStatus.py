@@ -22,12 +22,15 @@ class TestStatus(SeleniumDriver):           # can work without SeleniumDriver
                 else:
                     self.resultList.append("FAIL")
                     self.log.error(" ### Verification unsuccessful + " + resultMessage + str(result))
+                    self.screenpShot(resultMessage)
             else:
                 self.resultList.append("FAIL")
                 self.log.error(" ### Verification unsuccessful + " + resultMessage + str(result))
+                self.screenpShot(resultMessage)
         except:
             self.resultList.append("FAIL")
             self.log.error(" ### Exception occurred !!!")
+            self.screenpShot(resultMessage)
 
     def mark(self, result, resultMessage):
         """

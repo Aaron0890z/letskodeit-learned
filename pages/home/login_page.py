@@ -19,6 +19,7 @@ class LoginPage(BasePage):
     _login_btn = "//input[@value='Login']"
     _account_btn = "a.dynamic-link>span"
     _logout_btn = "a[href='/logout']"
+    _logo = "a.navbar-brand.navbar-logo.text-blue"
 
     def getSomething(self):
         self.getElement(self._login_link, locatorType="xpath")
@@ -47,7 +48,7 @@ class LoginPage(BasePage):
         return r1
 
     def verifyLoginTitle(self):
-        return self.verifyPageTitle("My Courses")
+        return self.verifyPageTitle("Google")
 
     def login(self, email="", passw=""):
         # self.getSomething()
@@ -57,6 +58,7 @@ class LoginPage(BasePage):
         self.clickLoginBtn()
 
     def logout(self):
+        # self.elementclick(self._logo, "css")
         self.ExplicitWait(self._account_btn, "css", timeout=10, pollFrequency=1)
         self.elementclick(self._account_btn, "css")
         self.ExplicitWait(self._logout_btn, "css", timeout=10, pollFrequency=1)

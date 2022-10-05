@@ -7,6 +7,7 @@ from selenium.common.exceptions import *
 from Utilities.GenericLogger import CustomLogger
 import logging
 import time
+import os
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.select import Select
 
@@ -427,3 +428,20 @@ class SeleniumDriver():
         except:
             self.log.error("Element :: '" + info + "' state could not be found")
         return enabled
+
+    def screenpShot(self, resultMessage):
+        filename = resultMessage + "." + str(round(time.time() * 1000)) + ".png"
+        ssdir = "../Screenshots/"
+        relativeFname = ssdir + filename
+        currentDir = os.path.dirname(__file__)      # Gives current dir
+        destinationFile = os.path.join(currentDir, relativeFname)
+        destinationDir = os.path.join(currentDir, ssdir)
+
+        try:
+            if not os.path.exists(destinationDir):
+                os.makedirs(destinationDir)
+            self.driver.save_screenshot(destinationFile)
+            self.log.info("SS saved to dir: " + destinationFile)
+        except:
+            self.log.error("### Exception Occured")
+            print_stack()
