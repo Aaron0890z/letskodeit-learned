@@ -14,6 +14,7 @@ class TestLogin(unittest.TestCase):
         # self.lp so it is available for the whole class
         self.ts = TestStatus(self.driver)
 
+    @pytest.mark.login
     @pytest.mark.run(order=2)
     def test_A(self):
         self.lp.logout()
@@ -23,6 +24,7 @@ class TestLogin(unittest.TestCase):
         result1 = self.lp.verifyloginsucc()
         self.ts.markFinal("Test valid login", result1, "of Valid login")  # assert result1 == True
 
+    @pytest.mark.login
     @pytest.mark.run(order=1)
     def test_B(self):
         self.lp.logout()
@@ -32,5 +34,7 @@ class TestLogin(unittest.TestCase):
 
 # s = LoginTest()
 # s.test_validlogin()
-    #  py.test -s -v Tests\home\login_tests.py
-    # py.test -s -v Tests\home\login_tests.py --browser Chrome
+# py.test -s -v Tests\home\login_tests.py
+# py.test -s -v Tests\home\login_tests.py --browser Chrome
+# To test only test_A | py.test -k test_A -s -v Tests\Article_Test.py --browser Chrome
+# to run only smoke | py.test -m login -s -v Tests\home\login_tests.py --browser Chrome
